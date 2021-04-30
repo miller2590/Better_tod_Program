@@ -1,0 +1,34 @@
+{%  extends "base.html" %}
+{% block content %}
+
+    <div class="container">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-6">
+                    {{ form.email.label(class='form-label') }}
+                    {{ form.email(class='form-control')}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form.username.label(class='form-label') }}
+                    {{ form.username(class='form-control') }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form.password.label(class='form-label') }}
+                    {{ form.password(class='form-control') }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form.pass_confirm.label(class='form-label') }}
+                    {{ form.pass_confirm(class='form-control') }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

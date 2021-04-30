@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mx-auto bg-light">
+        <h1>My Todo List</h1>
+    </div>
+
+    <div class="container">
+        {% for post in todo_posts.items %}
+            <div class="card">
+                <div class="card-body">
+                    <h2><a class='card-title' href="{{ url_for('todo_posts.todo_post', todo_post_id=post.id) }}">{{ post.title }}</a> </h2>
+                    <a href="{{ url_for('users.user_posts', username=post.author.username) }}">Written By: {{ post.author.username }}</a>
+                    <p>Published on: {{ post.date }}</p>
+                    <a class="btn btn-primary" href="{{ url_for('todo_posts.todo_post', todo_post_id=post.id) }}">Read Todo Post</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% for page_num in todo_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if todo_posts.page == page_num %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+
+{% endblock %}
