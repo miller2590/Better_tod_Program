@@ -1,1 +1,1 @@
-It's not pretty. I was practicing functioanlity on this one. It works. 
+An attempt to create a todo app with Flask.
